@@ -1,0 +1,791 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #fff0f3, #ffccd5);
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1400px;
+}
+
+/* --- Animasi Background Hati / Bunga --- */
+.heart-bg {
+    position: absolute;
+    top: -10vh;
+    font-size: 20px;
+    color: rgba(255, 143, 162, 0.6);
+    animation: fall linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Container Utama --- */
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 10;
+}
+
+/* --- HALAMAN 1: KADO --- */
+#gift-page {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#gift-page.hidden {
+    opacity: 0;
+    transform: scale(0.8) translateY(-80px);
+    pointer-events: none;
+}
+
+h2.title-text {
+    color: #ff4d6d;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 50px;
+    font-size: 40px;
+    text-align: center;
+    z-index: 10;
+    text-shadow: 2px 2px 12px rgba(255, 77, 109, 0.3);
+    letter-spacing: 1px;
+}
+
+.gift-container {
+    position: relative;
+    width: 460px;
+    height: 480px;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    z-index: 10;
+    transition: filter 0.3s ease;
+}
+
+.gift-container:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 105, 150, 0.6));
+}
+
+.box-shadow-base {
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(255, 77, 109, 0.4), rgba(255, 143, 162, 0.1));
+    border-radius: 50%;
+    filter: blur(14px);
+    z-index: 0;
+}
+
+.gift-box-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 380px;
+    height: 260px;
+    background: linear-gradient(145deg, #ffeef4 0%, #ffb8ca 100%);
+    border-radius: 48px 48px 38px 38px;
+    box-shadow: inset -4px -6px 15px rgba(150, 40, 70, 0.2), inset 6px 8px 20px rgba(255, 255, 255, 0.9), 0 25px 40px rgba(255, 77, 109, 0.3);
+    z-index: 1;
+    overflow: hidden;
+    backdrop-filter: blur(1px);
+}
+
+.gift-box-body::before {
+    content: "🌸💖✨💗🌸✨💖🌸";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.4);
+    font-size: 58px;
+    white-space: nowrap;
+    opacity: 0.2;
+    pointer-events: none;
+    letter-spacing: 18px;
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+    width: 200%;
+    text-align: center;
+}
+
+.gift-box-body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 35%, rgba(255, 245, 245, 0.6) 2%, transparent 3%);
+    background-size: 22px 22px;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.body-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(115deg, #ffb7c8 0%, #ff4d74 45%, #ff1a48 55%, #ff4d74 100%);
+    box-shadow: inset -2px 0 6px rgba(0,0,0,0.15), inset 2px 0 6px rgba(255,255,255,0.8);
+    z-index: 2;
+}
+
+.body-ribbon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,215,0,0.4), rgba(255,215,0,0.9), rgba(255,215,0,0.4));
+    opacity: 0.8;
+}
+
+.gift-box-lid {
+    position: absolute;
+    bottom: 252px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 410px;
+    height: 90px;
+    background: linear-gradient(145deg, #fff8fb 0%, #ffccda 100%);
+    border-radius: 60px 60px 48px 48px;
+    box-shadow: 0 18px 28px rgba(255, 77, 109, 0.3), inset -4px -5px 12px rgba(170, 70, 90, 0.15), inset 5px 5px 20px rgba(255, 255, 255, 0.9);
+    z-index: 3;
+    transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    backdrop-filter: blur(2px);
+}
+
+.gift-box-lid::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 30px;
+    width: 90px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,250,240,0.8), transparent);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+
+.lid-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 100%;
+    background: linear-gradient(115deg, #ffb7c8, #ff4d74, #ff1a48);
+    border-radius: 20px;
+    box-shadow: inset -2px 0 6px rgba(0,0,0,0.1), inset 2px 0 6px rgba(255,255,240,0.8);
+}
+
+.bow {
+    position: absolute;
+    bottom: 325px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 160px;
+    z-index: 4;
+    transition: all 0.7s ease;
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,0.2));
+}
+
+.bow-loop-left, .bow-loop-right {
+    position: absolute;
+    bottom: 40px;
+    width: 120px;
+    height: 100px;
+    background: linear-gradient(125deg, #ff789b, #ff2e5c);
+    box-shadow: inset 5px 5px 15px rgba(255,240,235,0.8), inset -6px -6px 12px rgba(120, 30, 50, 0.25);
+}
+
+.bow-loop-left {
+    left: 15px;
+    border-radius: 55% 45% 50% 50% / 65% 40% 60% 35%;
+    transform: rotate(-38deg);
+}
+
+.bow-loop-right {
+    right: 15px;
+    border-radius: 45% 55% 50% 50% / 40% 65% 35% 60%;
+    transform: rotate(38deg);
+}
+
+.bow-loop-left::after, .bow-loop-right::after {
+    content: "✨💖";
+    position: absolute;
+    font-size: 20px;
+    top: 30%;
+    left: 35%;
+    opacity: 0.8;
+    text-shadow: 0 0 4px gold;
+}
+
+.bow-tail-left, .bow-tail-right {
+    position: absolute;
+    bottom: -20px;
+    width: 60px;
+    height: 90px;
+    background: linear-gradient(145deg, #ff5a7e, #c9183f);
+    clip-path: polygon(10% 0, 90% 0, 100% 100%, 50% 75%, 0 100%);
+    filter: drop-shadow(4px 6px 8px rgba(0,0,0,0.15));
+}
+
+.bow-tail-left {
+    left: 65px;
+    transform: rotate(22deg);
+}
+
+.bow-tail-right {
+    right: 65px;
+    transform: rotate(-22deg);
+}
+
+.bow-center {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 58px;
+    height: 62px;
+    background: radial-gradient(circle at 35% 35%, #ff90ae, #e6395e);
+    border-radius: 50% 50% 48% 48%;
+    box-shadow: 0 8px 14px rgba(0,0,0,0.25), inset 4px 4px 12px rgba(255,245,215,0.9);
+    z-index: 5;
+}
+
+.bow-center::before {
+    content: "💎";
+    position: absolute;
+    font-size: 28px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.95;
+    text-shadow: 0 0 6px white;
+}
+
+.gift-container::after {
+    content: "🌷🌸🌼";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    letter-spacing: 12px;
+    opacity: 0.7;
+    pointer-events: none;
+    white-space: nowrap;
+    filter: drop-shadow(0 2px 4px rgba(255,105,150,0.4));
+}
+
+.click-text {
+    color: #ff4d6d;
+    position: absolute;
+    bottom: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: 20px;
+    animation: pulse 2s infinite;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: auto;
+    background: rgba(255,245,240,0.7);
+    backdrop-filter: blur(5px);
+    padding: 10px 28px;
+    border-radius: 60px;
+    white-space: nowrap;
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: 0 5px 12px rgba(255,77,109,0.2);
+    z-index: 20;
+}
+
+.gift-container.open .gift-box-lid {
+    transform: translateX(-50%) translateY(-210px) rotateX(50deg) rotateZ(-15deg) scale(0.8);
+    opacity: 0;
+}
+
+.gift-container.open .bow {
+    transform: translateX(-50%) translateY(-240px) rotate(-10deg) scale(0.85);
+    opacity: 0;
+}
+
+.gift-container.open .click-text {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.65; transform: translateX(-50%) scale(1); background: rgba(255,245,240,0.7);}
+    50% { opacity: 1; transform: translateX(-50%) scale(1.06); background: rgba(255,225,235,0.9);}
+}
+
+/* --- HALAMAN PESAN & COUNTDOWN --- */
+#message-page, #countdown-page {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    pointer-events: none;
+}
+
+#message-page.visible, #countdown-page.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.message-box {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    width: 88%;
+    max-width: 420px;
+    max-height: 68vh;
+    padding: 35px 30px;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(255, 77, 109, 0.15);
+    overflow-y: auto;
+    text-align: center;
+    z-index: 10;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.message-box h1 {
+    color: #ff4d6d;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+.message-box p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.clickable-text {
+    text-align: center !important;
+    color: #ff4d6d !important;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px dashed #ffb8ca;
+    border-radius: 15px;
+    transition: 0.3s ease;
+    background: rgba(255, 204, 213, 0.3);
+}
+
+.clickable-text:hover {
+    background: rgba(255, 204, 213, 0.8);
+    transform: scale(1.05);
+}
+
+.timer-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.time-box {
+    background: linear-gradient(135deg, #fff0f3, #ffccd5);
+    padding: 15px;
+    border-radius: 15px;
+    min-width: 70px;
+    box-shadow: 0 6px 15px rgba(255, 77, 109, 0.2);
+    border: 1px solid white;
+}
+
+.time-box span {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ff1a40;
+    display: block;
+}
+
+.time-box p {
+    margin: 0 !important;
+    font-size: 13px !important;
+    color: #ff4d6d;
+}
+
+/* --- HALAMAN MUSIC PLAYER & BUNGA --- */
+#flower-page {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    pointer-events: none;
+    background: #fff3f5;
+    overflow: hidden;
+}
+
+#flower-page.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.flower-frame {
+    position: fixed;
+    font-size: 35px;
+    pointer-events: none;
+    z-index: 99;
+    animation: floatFlowers 4s ease-in-out infinite alternate;
+}
+
+.frame-top-left { top: 20px; left: 20px; }
+.frame-top-right { top: 20px; right: 20px; }
+.frame-bottom-left { bottom: 20px; left: 20px; }
+.frame-bottom-right { bottom: 20px; right: 20px; }
+
+@keyframes floatFlowers {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    100% { transform: translateY(8px) scale(1.05) rotate(4deg); }
+}
+
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.55;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    animation: moveAurora 15s ease-in-out infinite alternate;
+}
+
+.blob-1 { width: 350px; height: 350px; background: #ffccd5; top: -50px; left: -100px; }
+.blob-2 { width: 400px; height: 400px; background: #fff0f3; bottom: -100px; right: -100px; animation-delay: -5s; }
+.blob-3 { width: 300px; height: 300px; background: #ffe5ec; top: 40%; left: 50%; animation-delay: -3s; }
+
+@keyframes moveAurora {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -60px) scale(1.2); }
+    100% { transform: translate(-20px, 30px) scale(0.9); }
+}
+
+.cinematic-player-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(40px) saturate(160%);
+    width: 88%;
+    max-width: 355px;
+    padding: 35px 24px 25px;
+    border-radius: 40px;
+    box-shadow: 0 30px 70px rgba(255, 77, 109, 0.12), inset 0 1px 0px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    text-align: center;
+    z-index: 10;
+}
+
+.turntable-area {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 15px auto;
+}
+
+.vinyl-disk {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #2a2a2a 20%, #151515 40%, #252525 45%, #0d0d0d 65%, #1f1f1f 70%);
+    border-radius: 50%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vinyl-disk.playing { animation: spinVinyl 14s linear infinite; }
+
+@keyframes spinVinyl { 100% { transform: rotate(360deg); } }
+
+.vinyl-groove {
+    position: absolute;
+    width: 86%;
+    height: 86%;
+    border-radius: 50%;
+    border: 1px double rgba(255, 255, 255, 0.04);
+}
+
+.vinyl-center-label {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #ff8fa2, #ff4d6d);
+    border-radius: 50%;
+    border: 3px solid #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+}
+
+.turntable-arm {
+    position: absolute;
+    width: 45px;
+    height: 70px;
+    top: -15px;
+    right: -10px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='45' height='70' viewBox='0 0 45 70'><path d='M35,5 L35,45 L15,65' stroke='%23888' stroke-width='3' fill='none'/><circle cx='35' cy='5' r='5' fill='%23ff4d6d'/><rect x='10' y='60' width='8' height='10' fill='%23ff1a40' transform='rotate(15)'/></svg>");
+    background-repeat: no-repeat;
+    transform-origin: 35px 5px;
+    transform: rotate(-25deg);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 12;
+}
+
+.turntable-arm.playing { transform: rotate(5deg); }
+
+.visualizer-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3px;
+    height: 18px;
+    margin-bottom: 20px;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+}
+
+.visualizer-container.playing { opacity: 1; }
+
+.v-bar {
+    width: 3px;
+    height: 3px;
+    background: #ff4d6d;
+    border-radius: 5px;
+    transition: height 0.15s ease;
+}
+
+.visualizer-container.playing .v-bar:nth-child(odd) { animation: bounceBar 0.5s ease-in-out infinite alternate; }
+.visualizer-container.playing .v-bar:nth-child(even) { animation: bounceBar 0.6s ease-in-out infinite alternate-reverse; }
+
+@keyframes bounceBar {
+    0% { height: 4px; }
+    100% { height: 18px; background: #ff1a40; box-shadow: 0 0 4px #ff1a40; }
+}
+
+.track-meta h2 { color: #2c2c2c; font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+.track-meta p { color: #ff4d6d; font-size: 13px; font-weight: 600; margin-bottom: 25px; }
+
+.sleek-track {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 77, 109, 0.1);
+    border-radius: 20px;
+}
+
+.sleek-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff758c, #ff1a40);
+    border-radius: 20px;
+    position: relative;
+}
+
+.sleek-glow-dot {
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    width: 11px;
+    height: 11px;
+    background: #ffffff;
+    border: 2px solid #ff1a40;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff1a40;
+}
+
+.controls-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.premium-play-btn {
+    width: 58px;
+    height: 58px;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.premium-play-btn:hover { transform: scale(1.1); background: #ff4d6d; box-shadow: 0 15px 30px rgba(255, 77, 109, 0.3); }
+.premium-play-btn:hover span { color: #ffffff; }
+
+#play-icon { color: #ff4d6d; font-size: 18px; margin-left: 2px; }
+
+.vol-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+.floating-lyrics-area {
+    max-height: 125px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 15px 0;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+}
+
+.floating-lyrics-area::-webkit-scrollbar { display: none; }
+
+.lyric-row {
+    font-size: 14.5px;
+    color: #555555;
+    margin: 20px 0;
+    line-height: 1.5;
+    transition: all 0.5s;
+    font-weight: 600;
+    opacity: 0.25;
+    filter: blur(1.8px);
+    transform: scale(0.93);
+}
+
+.lyric-row.active {
+    background: linear-gradient(135deg, #111111 0%, #ff1a40 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1.06);
+}
+
+.click-trigger {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ff4d6d;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
+    animation: triggerHeartbeat 1.5s infinite;
+}
+
+@keyframes triggerHeartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); color: #ff1a40; }
+}
+
+/* --- HALAMAN LOVE & BUNGA BERGERAK --- */
+#love-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, #fff0f3, #ffe5ec);
+    z-index: 9999;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#love-text {
+    font-family: 'Pacifico', cursive;
+    font-size: min(12vw, 64px);
+    color: #ff1a40;
+    text-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.7) rotate(-2deg);
+    transition: all 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+    user-select: none;
+}
+
+#love-text.reveal {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.stacked-flower {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    z-index: 2;
+    will-change: top;
+    animation: fallAndPile var(--fall-duration) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.flower-icon {
+    display: inline-block;
+    transition: transform 0.2s cubic-bezier(0.15, 0.85, 0.3, 1);
+    will-change: transform;
+}
+
+@keyframes fallAndPile {
+    0% { top: -50px; opacity: 0; }
+    10% { opacity: 1; }
+    100% { top: var(--stop-y); opacity: 0.9; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .gift-container { width: 360px; height: 380px; }
+    .gift-box-body { width: 300px; height: 210px; }
+    .gift-box-lid { width: 320px; height: 70px; bottom: 200px; }
+    .bow { width: 220px; height: 130px; bottom: 260px; }
+    .click-text { font-size: 16px; padding: 8px 20px; bottom: -70px; white-space: nowrap; }
+    h2.title-text { font-size: 32px; margin-bottom: 30px; }
+    .flower-frame { font-size: 24px; }
+    .time-box { min-width: 60px; padding: 10px; }
+    .time-box span { font-size: 20px; }
+}
+
+/* Custom Cursor Love */
+html, body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='24'>❤️</text></svg>"), auto;
+}
+
+a, button, .premium-play-btn, .vol-btn, .lyric-row {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' style='font-size: 24px;'><text y='24'>💖</text></svg>"), pointer !important;
+}

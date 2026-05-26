@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Kado Estetik Untukmu ❤️</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="heart-container"></div>
+
+    <!-- HALAMAN 1: KADO -->
+    <div id="gift-page" class="page">
+        <h2 class="title-text">A little gift for you...</h2>
+        
+        <div class="gift-container" id="gift-box" onclick="animateAndOpenGift()">
+            <div class="box-shadow-base"></div>
+            
+            <div class="bow">
+                <div class="bow-tail-left"></div>
+                <div class="bow-tail-right"></div>
+                <div class="bow-loop-left"></div>
+                <div class="bow-loop-right"></div>
+                <div class="bow-center"></div>
+            </div>
+            
+            <div class="gift-box-lid">
+                <div class="lid-ribbon"></div>
+            </div>
+            
+            <div class="gift-box-body">
+                <div class="body-ribbon"></div>
+            </div>
+            
+            <p class="click-text">Only For Geyesss</p>
+        </div>
+    </div>
+
+    <!-- HALAMAN 2: PESAN -->
+    <div id="message-page" class="page">
+        <div class="message-box">
+            <h1>Dear Favorite Person ❤️</h1>
+            <p>Yaww, kadonya berhasil dibuka! Hehe. Kotak pink ini emang sengaja aku bikin secantik mungkin, tapi tetep aja kalah kalau dibandingin sama ondiikuu. 🥰</p>
+            <p>Lewat tulisan singkat ini, aku cuma mau bilang makasih banyak ya. Makasih udah hadir di hidup aku, makasih buat setiap senyuman kamu yang selalu bisa ngerubah hari biasa aku jadi luar biasa.</p>
+            <p>Aku bersyukur banget bisa kenal kamu. Kamu itu kombinasi terbaik dari tempat cerita, temen berantem yang gemesin, sekaligus <i>support system</i> nomor satu buat aku.</p>
+            <p class="clickable-text" onclick="showCountdown()">✨ Adaa Sesuatu Untuk Dirimuu ✨</p>
+        </div>
+    </div>
+
+    <!-- HALAMAN 3: COUNTDOWN -->
+    <div id="countdown-page" class="page">
+        <div class="message-box">
+            <h1>Our Timeline💖</h1>
+            <p style="text-align: center;">Setiap detik bersamamu adalah hal yang berharga buat aku.</p>
+            
+            <div class="timer-container">
+                <div class="time-box"><span id="years">0</span><p>Tahun</p></div>
+                <div class="time-box"><span id="months">0</span><p>Bulan</p></div>
+                <div class="time-box"><span id="weeks">0</span><p>Minggu</p></div>
+                <div class="time-box"><span id="days">0</span><p>Hari</p></div>
+                <div class="time-box"><span id="hours">0</span><p>Jam</p></div>
+                <div class="time-box"><span id="minutes">0</span><p>Menit</p></div>
+                <div class="time-box"><span id="seconds">0</span><p>Detik</p></div>
+            </div>
+
+            <p class="center-text" style="margin-top: 15px;">Sejak 14 Desember 2024<br>Dan akan terus bertambah selamanya ✨</p>
+            <p class="clickable-text" style="margin-top: 15px; font-size: 13px;" onclick="showFlowerPage()">
+                🎁 Klik ini untuk kejutan Lagii... ✨
+            </p>
+        </div>
+    </div>
+
+    <!-- HALAMAN 4: MUSIC PLAYER PREMIUM -->
+    <div id="flower-page" class="page">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+
+        <div class="flower-frame frame-top-left">🌸🌷</div>
+        <div class="flower-frame frame-top-right">🌷🌸</div>
+        <div class="flower-frame frame-bottom-left">🌸🌷</div>
+        <div class="flower-frame frame-bottom-right">🌷🌸</div>
+        
+        <audio id="music-track" src="Smpai Jadi Debu.mp3"></audio>
+
+        <div class="cinematic-player-card">
+            <div class="turntable-area">
+                <div class="vinyl-disk" id="album-art">
+                    <div class="vinyl-groove"></div>
+                    <div class="vinyl-center-label">💝</div>
+                </div>
+                <div class="turntable-arm" id="turntable-arm"></div>
+            </div>
+
+            <div class="visualizer-container" id="visualizer">
+                <div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div><div class="v-bar"></div>
+                <div class="v-bar"></div>
+            </div>
+            
+            <div class="track-meta">
+                <h2>Sampai Kita Tua</h2>
+                <p>Nadhif Basalamah</p>
+            </div>
+            
+            <div class="sleek-progress-wrapper">
+                <div class="sleek-track">
+                    <div class="sleek-bar" id="progress-bar">
+                        <div class="sleek-glow-dot"></div>
+                    </div>
+                </div>
+                <div class="time-counter">
+                    <span id="current-time">0:00</span>
+                    <span>3:14</span>
+                </div>
+            </div>
+            
+            <div class="controls-wrapper">
+                <button class="vol-btn" onclick="changeVolume(-0.1)">🔉</button>
+                <button class="premium-play-btn" id="play-button" onclick="togglePlay()">
+                    <span id="play-icon">▶</span>
+                </button>
+                <button class="vol-btn" onclick="changeVolume(0.1)">🔊</button>
+            </div>
+            
+            <div class="floating-lyrics-area" id="lyrics-window">
+                <div class="lyric-row active" data-time="0">S'moga ya, s'moga kita bisa bersama...</div>
+                <div class="lyric-row" data-time="25">Melewati badai, berbagi cerita...</div>
+                <div class="lyric-row" data-time="50">Sampai kita tua, sampai rambut memutih...</div>
+                <div class="lyric-row" data-time="75">Kau tetap menjadi manusia paling indah... ❤️</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <span class="click-trigger" onclick="bukaHalamanCinta()">Masih Adaa Lagii</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HALAMAN 5: LOVE & FLOWER SHOWER -->
+    <div id="love-page" class="page" style="display: none;">
+        <div id="flower-shower-container"></div>
+        <h1 id="love-text">I LOVE GEYESSS 💖</h1>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
