@@ -416,30 +416,47 @@ h2.title-text {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 25px 0;
+    gap: 10px;          /* Jarak antar kotak dikecilkan agar muat sebaris */
+    margin: 20px 0;
+    width: 100%;
 }
 
 .time-box {
     background: linear-gradient(135deg, #fff0f3, #ffccd5);
-    padding: 15px;
+    padding: 12px 8px;   /* Padding disesuaikan */
     border-radius: 15px;
-    min-width: 70px;
+    flex: 1;             /* Membuat kotak melebar fleksibel mengikuti panjangnya angka */
+    min-width: 85px;    /* Lebar minimal ditambah sedikit agar angka jutaan tidak sesak */
+    max-width: 120px;   /* Batas lebar maksimal biar tetap estetik */
     box-shadow: 0 6px 15px rgba(255, 77, 109, 0.2);
     border: 1px solid white;
+    text-align: center;
 }
 
 .time-box span {
-    font-size: 26px;
+    font-size: 18px;    /* Ukuran font angka dikecilkan dari 26px agar angka puluhan juta muat satu baris */
     font-weight: bold;
     color: #ff1a40;
+    font-family: 'Quicksand', sans-serif;
     display: block;
+    word-break: keep-all; /* Mencegah angka terpotong ke bawah */
 }
 
 .time-box p {
-    margin: 0 !important;
-    font-size: 13px !important;
+    margin: 5px 0 0 0 !important;
+    font-size: 11px !important; /* Ukuran teks keterangan disesuaikan */
     color: #ff4d6d;
+    text-align: center !important;
+    font-weight: 600;
+}
+
+/* Responsif khusus HP Layar Kecil agar tidak berantakan */
+@media (max-width: 450px) {
+    .timer-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Otomatis rapi terbagi jadi grid jika layar terlalu sempit */
+        gap: 8px;
+    }
 }
 
 /* --- HALAMAN MUSIC PLAYER & BUNGA --- */
@@ -747,25 +764,70 @@ h2.title-text {
     transform: scale(1) rotate(0deg);
 }
 
+/* ======================== GANTI / TAMBAH DI STYLE.CSS ======================== */
+
+/* Kontainer utama halaman akhir diubah menjadi tema ruang angkasa mewah */
+#love-page {
+    background: radial-gradient(circle at center, #1a001a 0%, #0a000f 100%) !important;
+    box-shadow: inset 0 0 100px rgba(255, 26, 84, 0.2);
+}
+
+/* Teks utama dibuat menyala terang seperti neon di kegelapan */
+#love-text {
+    font-family: 'Pacifico', cursive;
+    font-size: min(13vw, 55px);
+    color: #fff;
+    text-shadow: 0 0 10px #ff1a40, 0 0 20px #ff1a40, 0 0 40px #ff4d6d, 0 0 80px #ff4d6d !important;
+    text-align: center;
+    z-index: 105;
+}
+
+/* Partikel Bintang / Meteor */
 .stacked-flower {
     position: absolute;
     user-select: none;
     pointer-events: none;
     z-index: 2;
-    will-change: top;
-    animation: fallAndPile var(--fall-duration) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    will-change: transform, opacity;
+    animation: meteorJatuhKosmik var(--durasi-animasi) linear infinite;
 }
 
 .flower-icon {
     display: inline-block;
-    transition: transform 0.2s cubic-bezier(0.15, 0.85, 0.3, 1);
-    will-change: transform;
+    will-change: transform, opacity;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                opacity 0.3s ease, 
+                color 0.3s ease; 
+    filter: drop-shadow(0 0 8px currentColor);
 }
 
-@keyframes fallAndPile {
-    0% { top: -50px; opacity: 0; }
-    10% { opacity: 1; }
-    100% { top: var(--stop-y); opacity: 0.9; }
+.flower-icon.stuck {
+    animation: none !important; 
+    position: fixed !important; 
+    z-index: 10000; 
+    
+
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 10px #ff1a40) drop-shadow(0 0 20px #ff4d6d) !important;
+    opacity: 1 !important;
+}
+
+/* Animasi meteor melesat miring dari atas kanan ke bawah kiri secara sinematik */
+@keyframes meteorJatuhKosmik {
+    0% {
+        transform: translateY(-80px) translateX(50px) scale(0.3) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(105vh) translateX(-150px) scale(1.2) rotate(280deg);
+        opacity: 0;
+    }
 }
 
 /* Responsive */
@@ -779,6 +841,28 @@ h2.title-text {
     .flower-frame { font-size: 24px; }
     .time-box { min-width: 60px; padding: 10px; }
     .time-box span { font-size: 20px; }
+}
+
+/* Partikel yang menempel ke kursor */
+.stacked-flower.attached-particle {
+    animation: none !important;
+    position: fixed !important;
+    z-index: 10000;
+    transition: left 0.05s linear, top 0.05s linear;
+    filter: drop-shadow(0 0 12px #ff4d6d) drop-shadow(0 0 20px #ff1a40);
+    pointer-events: none;
+}
+
+.stacked-flower.attached-particle .flower-icon {
+    transform: scale(1.2);
+    filter: brightness(1.2) drop-shadow(0 0 6px gold);
+    transition: transform 0.2s;
+}
+
+/* Animasi ledakan hati */
+@keyframes heartExplode {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
 }
 
 /* Custom Cursor Love */
